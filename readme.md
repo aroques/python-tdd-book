@@ -1,15 +1,11 @@
 ### Required Software Installations
-
 <dl>
     <dt>The Firefox web browser</dt>
     <dd>Selenium can actually drive any of the major browsers, but Firefox is the best to use as an example because it’s reliably cross-platform and, as a bonus, is less sold out to corporate interests.</dd>
-
     <dt>The Git version control system</dt>
     <dd>This is available for any platform, at http://git-scm.com/. On Windows, this comes with the Bash command line, which is needed for the book.</dd>
-
     <dt>A virtualenv with Python 3, Django 1.11, and Selenium 3 in it</dt>
     <dd>Python’s virtualenv and pip tools now come bundled with Python 3.4+ (they didn’t always used to, so this is a big hooray). Detailed instructions for preparing your virtualenv follow.</dd>
-
     <dt>Geckodriver</dt>
     <dd>This is the driver that will let us remotely control Firefox via Selenium. I’ll point to a download link in Installing Firefox and Geckodriver.</dd>
 </dl>
