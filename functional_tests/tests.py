@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
 import time
 
-MAX_WAIT = 10
+MAX_WAIT = 8
 
 class NewVisitorTest(LiveServerTestCase):
 
@@ -20,7 +20,7 @@ class NewVisitorTest(LiveServerTestCase):
             try:
                 table = self.browser.find_element_by_id('id_list_table')
                 rows = table.find_elements_by_tag_name('tr')
-                self.assertIn(row_text, [row_text for row in rows])
+                self.assertIn(row_text, [row.text for row in rows])
                 return
             except(AssertionError, WebDriverException) as e:
                 if time.time() - start_time > MAX_WAIT:
@@ -63,13 +63,6 @@ class NewVisitorTest(LiveServerTestCase):
         # The page updates again, and now shows both items on her list
         self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
-        
-             
-        # Edith wonders whether the site will remember her list. The she sees
-        # that the site has generated a unique URL for her -- there is some 
-        # explanatory text to that effect.
-
-        # She visits that URL 0 her to-do list is still there.
 
         # Satisfied, she goes back to sleep
     
@@ -87,7 +80,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # Now a new user, Francis, comes along to the site.
 
-        ## We use a new browser session to make sure athat no information
+        ## We use a new browser session to make sure that no information
         ## of Edith's is coming through from cookies etc
         self.browser.quit()
         self.browser = webdriver.Firefox()
@@ -95,9 +88,9 @@ class NewVisitorTest(LiveServerTestCase):
         # Francis visits the home page. There is no sign of Edith's
         # list
         self.browser.get(self.live_server_url)
-        page_text = self.browser.find_element_by_tag_name
-        self.assertNotIn("Buy peacock feathers", page_text)
-        self.assertNotIn("make a fly", page_text)
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertNotIn('Buy peacock feathers', page_text)
+        self.assertNotIn('make a fly', page_text)
 
         # Francis starts a new list by entering a new item. He
         # is less interesting than Edith...
