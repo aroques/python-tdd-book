@@ -41,12 +41,13 @@ Let’s create a Python 3 virtualenv called "superlists"[2] I’m assuming you�
 ```
 $ cd python-tdd-book
 $ py -3.6 -m venv virtualenv
-On Windows the py executable is a shortcut for different Python versions. On Mac or Linux we use python3.6:
 ```
+On Windows the py executable is a shortcut for different Python versions. On Mac or Linux we use python3.6:
+
 *on Mac/Linux:*
 ```
 $ cd python-tdd-book
-$ python3.6 -m venv virtualen
+$ python3.6 -m venv virtualenv
 ```
 
 ### Installing Django and Selenium
